@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para mi osita</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #botones-container {
+      position: relative;
+      width: 400px;
+      height: 100px;
+      margin: 0 auto;
+    }
+    #boton-noo {
+      position: absolute;
+      transition: all 0.1s ease;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .heart-animate:hover .heart {
+      animation: heartbeat 0.6s infinite;
+    }
+    .animate-gradient {
+  background-size: 300%;
+  -webkit-animation: animatedgradient 6s ease infinite alternate;
+  -moz-animation: animatedgradient 6s ease infinite alternate;
+  animation: animatedgradient 6s ease infinite alternate;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+      }
+    }
+    .heart-float {
+      position: fixed;
+      z-index: 1000;
+      pointer-events: none;
+      color: #ff6b81;
+      font-size: 24px;
+      animation: floatUp 2s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="flex flex-col justify-center items-center h-screen bg-gray-100">
+  <div class="text-center">
+    <p id="pregunta1" class="bg-gradient-to-r from-red-700 via-red-600 to-red-300 text-transparent bg-clip-text text-3xl font-bold mb-4 animate-gradient">¿Me amas?</p>
+    <p id="pregunta2" class="gradient-text text-3xl font-semibold mb-4 hidden">¿No me amas!?</p>
+    <p id="loveutoo" class="w-[800px] pb-[280px] bg-gradient-to-r from-red-700 via-red-600 to-red-300 text-transparent bg-clip-text text-xl font-semibold mb-4 hidden animate-gradient">Yo también te amo mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mi osita hermosaaa ❤︎</p>
+    
+    <div id="botones-container" class="space-x-2">
+      <button id="boton-si" 
+              class="heart-animate inline-flex items-center px-4 py-2 bg-green-500 text-white font-bold rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl"
+              onclick="mostrarOso(); cambiarTexto(); spawnHearts();">
+        <svg class="heart w-6 h-6 mr-2 fill-current" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                   2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                   C13.09 3.81 14.76 3 16.5 3
+                   19.58 3 22 5.42 22 8.5
+                   c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        Shi
+      </button>
+      <button id="boton-no" 
+              class="heart-animate inline-flex items-center px-4 py-2 bg-red-500 text-white font-bold rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl"
+              onclick="cambiarBoton(), mostrarOsoEnojado(), spawnAngryEmojis()">
+        <svg class="x-icon w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+        Ño
+      </button>
+      <button id="boton-noo" 
+              class="heart-animate inline-flex items-center px-4 py-2 bg-red-500 text-white font-bold rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl hidden"
+              onclick="cambiarBoton(), spawnAngryEmojis()">
+        <svg class="x-icon w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+        Noo
+      </button>
+    </div>
+  </div>
+
+  <div id="oso-container" 
+       class="fixed bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full transition-transform duration-700 ease-out">
+    <img src="dudu-bubu-bear-and-panda.gif" alt="Oso feli" class="w-56 mx-auto">
+    <iframe class="w-[400px]" style="border-radius:12px" src="https://open.spotify.com/embed/track/7HW5WIw7ZgZORCzUxv5gW5?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+  </div>
+
+  <div id="osoangry-container" 
+       class="fixed bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full transition-transform duration-700 ease-out">
+    <img src="bubu-dudu-angry-cute.gif" alt="Oso troste" class="w-56 mx-auto">
+  </div>
+
+  <script>
+    function cambiarBoton() {
+      document.getElementById("boton-no").classList.add("hidden");
+      document.getElementById("boton-noo").classList.remove("hidden");
+      document.getElementById("pregunta1").classList.add("hidden");
+      document.getElementById("pregunta2").classList.remove("hidden");
+    }
+    function cambiarTexto() {
+      document.getElementById("pregunta1").classList.add("hidden");
+      document.getElementById("pregunta2").classList.add("hidden");
+      document.getElementById("loveutoo").classList.remove("hidden");
+    }
+
+    function mostrarOso() {
+  document.getElementById("osoangry-container").classList.add("translate-y-full");
+  document.getElementById("oso-container").classList.add("translate-y-full");
+  document.getElementById("botones-container").classList.add("hidden");
+  document.getElementById("pregunta2").classList.add("hidden");
+  document.getElementById("oso-container").classList.remove("hidden");
+  document.getElementById("oso-container").classList.remove("translate-y-full");
+}
+
+    function mostrarOsoEnojado() {
+      document.getElementById("osoangry-container").classList.remove("translate-y-full");
+      document.getElementById("oso-container").classList.add("hidden");
+    }
+    function moverBotonNoo(e) {
+      const boton = document.getElementById("boton-noo");
+      const container = document.getElementById("botones-container");
+      const containerRect = container.getBoundingClientRect();
+
+      const mouseX = e.clientX - containerRect.left;
+      const mouseY = e.clientY - containerRect.top;
+      
+      const botonRect = boton.getBoundingClientRect();
+      const maxX = containerRect.width - botonRect.width;
+      const maxY = containerRect.height - botonRect.height;
+      
+      let randomX, randomY, distance;
+      const minDistance = 130; 
+
+      let attempts = 0;
+      do {
+        randomX = Math.floor(Math.random() * maxX);
+        randomY = Math.floor(Math.random() * maxY);
+        distance = Math.sqrt(Math.pow(randomX - mouseX, 2) + Math.pow(randomY - mouseY, 2));
+        attempts++;
+        if(attempts > 10) break;
+      } while (distance < minDistance);
+      
+      boton.style.left = randomX + "px";
+      boton.style.top = randomY + "px";
+    }
+    document.getElementById("boton-noo").addEventListener("mouseover", moverBotonNoo);
+    function spawnHearts() {
+      for (let i = 0; i < 5; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart-float");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "0px";
+        heart.innerHTML = "&#10084;";
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+      }
+    }
+
+    function spawnAngryEmojis() {
+      for (let i = 0; i < 5; i++) {
+        const angry = document.createElement("div");
+        angry.classList.add("heart-float");
+        angry.style.left = Math.random() * 100 + "vw";
+        angry.style.bottom = "0px";
+        angry.innerHTML = "😡";
+        document.body.appendChild(angry);
+        
+        setTimeout(() => {
+          angry.remove();
+        }, 2000);
+      }
+    }
+  </script>
+</body>
+</html>
